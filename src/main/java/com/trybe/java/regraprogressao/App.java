@@ -1,5 +1,6 @@
 package com.trybe.java.regraprogressao;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -11,6 +12,8 @@ public class App {
    * Metodo main.
    */
   public static void main(String[] args) {
+    Locale.setDefault(Locale.US);
+
     Scanner scanner = new Scanner(System.in);
     Atividades[] atividades;
 
@@ -21,12 +24,12 @@ public class App {
     atividades = new Atividades[qtyInt];
 
     for (int i = 1; i < qtyInt + 1; i += 1) {
-      System.out.println("Digite o nome da atividade " + i);
+      System.out.println("Digite o nome da atividade " + i + ":");
       String atv = scanner.nextLine();
-      System.out.println("Digite o peso da atividade " + i);
+      System.out.println("Digite o peso da atividade " + i + ":");
       String peso = scanner.nextLine();
       int pesoInt = Integer.parseInt(peso);
-      System.out.println("Digite a nota obtida para " + atv);
+      System.out.println("Digite a nota obtida para " + atv + ":");
       String nota = scanner.nextLine();
       int notaInt = Integer.parseInt(nota);
       atividades[i - 1] = new Atividades(atv, pesoInt, notaInt);
@@ -43,14 +46,18 @@ public class App {
 
     float notaTotal = (float) totalDividendo / totalDivisor;
 
-    if (notaTotal < 85) {
-      System.out.println(
-          "Lamentamos informar que, com base na sua pontuação alcançada neste período, "
-          + notaTotal
-          + "%, você não atingiu a pontuação mínima necessária para sua aprovação.");
-    } else  {
-      System.out.printf("Parabéns! Você alcançou "
-          + "%.1f%%! E temos o prazer de informar que você obteve aprovação! ", notaTotal);
+    if (totalDivisor == 100) {
+      if (notaTotal < 85) {
+        System.out.printf(
+            "Lamentamos informar que, com base na sua pontuação alcançada neste período,"
+                + " %.1f%%, você não atingiu a pontuação mínima necessária para sua aprovação.",
+            notaTotal);
+      } else {
+        System.out.printf("Parabéns! Você alcançou "
+            + "%.1f%%! E temos o prazer de informar que você obteve aprovação! ", notaTotal);
+      }
+    } else {
+      System.out.println("A somatória dos pesos não é 100!");
     }
   }
 }
