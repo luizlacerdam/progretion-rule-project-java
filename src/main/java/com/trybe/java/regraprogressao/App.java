@@ -41,7 +41,7 @@ public class App {
       totalDivisor += atividades[i].peso;
     }
 
-    int notaTotal = totalDividendo / totalDivisor;
+    float notaTotal = (float) totalDividendo / totalDivisor;
 
     if (notaTotal < 85) {
       System.out.println(
@@ -49,8 +49,8 @@ public class App {
           + notaTotal
           + "%, você não atingiu a pontuação mínima necessária para sua aprovação.");
     } else  {
-      System.out.println("Parabéns! Você alcançou "
-          + notaTotal + "%! E temos o prazer de informar que você obteve aprovação! ");
+      System.out.printf("Parabéns! Você alcançou "
+          + "%.1f%%! E temos o prazer de informar que você obteve aprovação! ", notaTotal);
     }
   }
 }
