@@ -5,6 +5,9 @@ public class Atividades {
   public int peso;
   public int nota;
 
+  /**
+   * Classe Atividades.
+   */
   public Atividades(String nome, int peso, int nota) {
     this.nome = nome;
     this.peso = peso;
